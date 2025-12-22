@@ -62,7 +62,7 @@ if (homeSection) {
 }
 
 // Typing Animation
-const typingTexts = ["Full Stack Web Developer", "Web Designer", "Photographer"];
+const typingTexts = ["Full Stack Web Developer", "UI/UX Designer", "Photographer", "Video Editor", "Photo Editor", "Graphic Designer"];
 let textIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
@@ -109,6 +109,16 @@ function createHeroParticle() {
     particle.style.left = Math.random() * 100 + '%';
     particle.style.animationDuration = Math.random() * 10 + 15 + 's';
     particle.style.animationDelay = Math.random() * 5 + 's';
+
+    // Random size
+    const size = Math.random() * 6 + 2;
+    particle.style.width = size + 'px';
+    particle.style.height = size + 'px';
+
+    // Random color
+    const colors = ['#00d4ff', '#0099cc', '#ff6b6b', '#4ecdc4', '#45b7d1', '#f9ca24'];
+    particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+
     heroParticlesContainer.appendChild(particle);
 
     setTimeout(() => {
@@ -123,6 +133,132 @@ for (let i = 0; i < 20; i++) {
 
 // Continue creating particles
 setInterval(createHeroParticle, 1000);
+
+// Projects Particles
+const projectsParticlesContainer = document.getElementById('projects-particles');
+
+function createProjectsParticle() {
+    const particle = document.createElement('div');
+    particle.className = 'projects-particle';
+    particle.style.left = Math.random() * 100 + '%';
+    particle.style.animationDuration = Math.random() * 8 + 10 + 's';
+    particle.style.animationDelay = Math.random() * 5 + 's';
+    projectsParticlesContainer.appendChild(particle);
+
+    setTimeout(() => {
+        particle.remove();
+    }, 20000);
+}
+
+// Create initial projects particles
+for (let i = 0; i < 15; i++) {
+    setTimeout(createProjectsParticle, i * 300);
+}
+
+// Continue creating projects particles
+setInterval(createProjectsParticle, 1500);
+
+// About Particles
+const aboutParticlesContainer = document.getElementById('about-particles');
+
+function createAboutParticle() {
+    const particle = document.createElement('div');
+    particle.className = 'about-particle';
+    particle.style.left = Math.random() * 100 + '%';
+    particle.style.animationDuration = Math.random() * 10 + 15 + 's';
+    particle.style.animationDelay = Math.random() * 5 + 's';
+
+    // Random size
+    const size = Math.random() * 6 + 2;
+    particle.style.width = size + 'px';
+    particle.style.height = size + 'px';
+
+    // Random color
+    const colors = ['#00d4ff', '#0099cc', '#ff6b6b', '#4ecdc4', '#45b7d1', '#f9ca24'];
+    particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+    aboutParticlesContainer.appendChild(particle);
+
+    setTimeout(() => {
+        particle.remove();
+    }, 20000);
+}
+
+// Create initial about particles
+for (let i = 0; i < 12; i++) {
+    setTimeout(createAboutParticle, i * 250);
+}
+
+// Continue creating about particles
+setInterval(createAboutParticle, 1200);
+
+// Contact Particles
+const contactParticlesContainer = document.getElementById('contact-particles');
+
+function createContactParticle() {
+    const particle = document.createElement('div');
+    particle.className = 'contact-particle';
+    particle.style.left = Math.random() * 100 + '%';
+    particle.style.animationDuration = Math.random() * 10 + 15 + 's';
+    particle.style.animationDelay = Math.random() * 5 + 's';
+
+    // Random size
+    const size = Math.random() * 6 + 2;
+    particle.style.width = size + 'px';
+    particle.style.height = size + 'px';
+
+    // Random color
+    const colors = ['#00d4ff', '#0099cc', '#ff6b6b', '#4ecdc4', '#45b7d1', '#f9ca24'];
+    particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+    contactParticlesContainer.appendChild(particle);
+
+    setTimeout(() => {
+        particle.remove();
+    }, 20000);
+}
+
+// Create initial contact particles
+for (let i = 0; i < 10; i++) {
+    setTimeout(createContactParticle, i * 200);
+}
+
+// Continue creating contact particles
+setInterval(createContactParticle, 1000);
+
+// Footer Particles
+const footerParticlesContainer = document.getElementById('footer-particles');
+
+function createFooterParticle() {
+    const particle = document.createElement('div');
+    particle.className = 'footer-particle';
+    particle.style.left = Math.random() * 100 + '%';
+    particle.style.animationDuration = Math.random() * 8 + 12 + 's';
+    particle.style.animationDelay = Math.random() * 5 + 's';
+
+    // Random size
+    const size = Math.random() * 4 + 1;
+    particle.style.width = size + 'px';
+    particle.style.height = size + 'px';
+
+    // Random color
+    const colors = ['#00d4ff', '#0099cc', '#ff6b6b', '#4ecdc4', '#45b7d1', '#f9ca24'];
+    particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+    footerParticlesContainer.appendChild(particle);
+
+    setTimeout(() => {
+        particle.remove();
+    }, 20000);
+}
+
+// Create initial footer particles
+for (let i = 0; i < 8; i++) {
+    setTimeout(createFooterParticle, i * 150);
+}
+
+// Continue creating footer particles
+setInterval(createFooterParticle, 800);
 
 // Animated Background
 const animatedBg = document.getElementById('animated-bg');
@@ -176,6 +312,54 @@ function updateCursor() {
 }
 
 updateCursor();
+
+// Scroll-triggered animations
+const sections = document.querySelectorAll('section');
+
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+        }
+    });
+}, { threshold: 0.1 });
+
+sections.forEach(section => {
+    sectionObserver.observe(section);
+});
+
+// Theme Toggle
+const themeToggle = document.getElementById('theme-toggle');
+const body = document.body;
+
+function toggleTheme() {
+    body.classList.toggle('light-mode');
+    const isLightMode = body.classList.contains('light-mode');
+    localStorage.setItem('theme', isLightMode ? 'light' : 'dark');
+
+    // Update toggle icon
+    const toggleIcon = themeToggle.querySelector('.toggle-icon');
+    toggleIcon.textContent = isLightMode ? '☀️' : '🌙';
+}
+
+// Load saved theme
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'light') {
+    body.classList.add('light-mode');
+    themeToggle.querySelector('.toggle-icon').textContent = '☀️';
+}
+
+themeToggle.addEventListener('click', toggleTheme);
+
+// Parallax effect for hero background
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const rate = scrolled * -0.5;
+    const heroBg = document.querySelector('.hero-bg');
+    if (heroBg) {
+        heroBg.style.transform = `translateY(${rate}px)`;
+    }
+});
 
 // Contact Form Handling
 const contactForm = document.getElementById('contact-form');
