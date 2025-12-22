@@ -6,7 +6,6 @@
     <title>Aybanskiee</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="images/logoo.png" type="image/x-icon">
 </head>
 <body>
     <nav class="navbar">
@@ -18,6 +17,9 @@
                 <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
+            <div class="theme-toggle" id="theme-toggle">
+                <span class="toggle-icon">🌙</span>
+            </div>
             <div class="hamburger">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -76,23 +78,23 @@
                         <span>Get In Touch</span>
                         <i class="btn-icon">💬</i>
                     </a>
-                    <a href="images/resume.jpg" class="btn btn-outline hero-btn">
-                        <span>Download My Resume</span>
+                    <a href="#" class="btn btn-outline hero-btn">
+                        <span>Download CV</span>
                         <i class="btn-icon">📄</i>
                     </a>
                 </div>
 
                 <div class="hero-social">
-                    <a href="https://github.com/ivannnshhhh" class="social-icon" data-tooltip="GitHub">
+                    <a href="#" class="social-icon" data-tooltip="GitHub">
                         <img src="images/git.png" alt="GitHub">
                     </a>
-                    <a href="https://www.facebook.com/ivantottt" class="social-icon" data-tooltip="Facebook">
+                    <a href="#" class="social-icon" data-tooltip="Facebook">
                         <img src="images/fb.png" alt="Facebook">
                     </a>
-                    <a href="https://www.instagram.com/aybanskieee/" class="social-icon" data-tooltip="Instagram">
+                    <a href="#" class="social-icon" data-tooltip="Instagram">
                         <img src="images/ig.png" alt="Instagram">
                     </a>
-                    <a href="https://mail.google.com/mail/u/0/#inbox" class="social-icon" data-tooltip="Email">
+                    <a href="#" class="social-icon" data-tooltip="Email">
                         <img src="images/email.jpg" alt="Email">
                     </a>
                 </div>
@@ -136,6 +138,14 @@
     </section>
 
     <section id="about">
+        <div class="about-bg">
+            <div class="about-shapes">
+                <div class="shape shape-about-1"></div>
+                <div class="shape shape-about-2"></div>
+                <div class="shape shape-about-3"></div>
+            </div>
+            <div class="about-particles" id="about-particles"></div>
+        </div>
         <div class="container">
             <h2>About Me</h2>
             <div class="about-content">
@@ -145,37 +155,41 @@
                 </div>
                 <div class="info">
                     <h3>Ivan Fajarillo</h3>
-                    <p class="about-description">Full Stack Web Developer with 5+ years of experience in creating robust and scalable web applications. Passionate about clean code, user experience, and staying up-to-date with the latest technologies.</p>
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <span class="contact-icon">📍</span>
-                            <div>
-                                <strong>Address:</strong><br>
-                                Opal St. Brgy. San Nicolas 3, Bacoor City, Cavite
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <span class="contact-icon">📧</span>
-                            <div>
-                                <strong>Email:</strong><br>
-                                ivanfajarillo90@gmail.com
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <span class="contact-icon">📱</span>
-                            <div>
-                                <strong>Contact Number:</strong><br>
-                                09938860210
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <span class="contact-icon">🎉</span>
-                            <div>
-                                <strong>Birthday:</strong><br>
-                                January 23, 2008
-                            </div>
+                    <p class="about-description">I am a full stack web developer with three years of hands on experience in building web applications. I work across front end and back end development with a strong focus on clean structure, performance, and maintainability. I build responsive interfaces, connect secure APIs, and manage databases with attention to detail. I enjoy solving technical problems and translating requirements into working solutions. I continuously study modern frameworks and development practices to improve my output. Coding is both my profession and a discipline I commit to every day.</p>
+                </div>
+            </div>
+            <div class="about-details">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="contact-icon">📍</span>
+                        <div>
+                            <strong>Address:</strong><br>
+                            Opal St. Brgy. San Nicolas 3, Bacoor City, Cavite
                         </div>
                     </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📧</span>
+                        <div>
+                            <strong>Email:</strong><br>
+                            ivanfajarillo90@gmail.com
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📱</span>
+                        <div>
+                            <strong>Contact Number:</strong><br>
+                            09938860210
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">🎉</span>
+                        <div>
+                            <strong>Birthday:</strong><br>
+                            January 23, 2008
+                        </div>
+                    </div>
+                </div>
+                <div class="tech-stack">
                     <h4>Tech Stack</h4>
                     <div class="skills">
                         <div class="skill">
@@ -244,17 +258,21 @@
                     </div>
                 </div>
             </div>
+            </div>
         </div>
     </section>
 
     <section id="projects">
+        <div class="projects-bg">
+            <div class="projects-particles" id="projects-particles"></div>
+        </div>
         <div class="container">
             <h2>My Projects</h2>
             <p class="section-description">Here are some of my recent projects that showcase my skills and passion for web development.</p>
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://via.placeholder.com/400x200/333/fff?text=E-Commerce" alt="Project 1">
+                        <img src="images/ecommerce.png" alt="Project 1">
                         <div class="project-overlay">
                             <div class="project-links">
                                 <a href="#" class="project-link">🔗 Live Demo</a>
@@ -275,7 +293,7 @@
                 </div>
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://via.placeholder.com/400x200/333/fff?text=Blog" alt="Project 2">
+                        <img src="images/blog.png" alt="Project 2">
                         <div class="project-overlay">
                             <div class="project-links">
                                 <a href="#" class="project-link">🔗 Live Demo</a>
@@ -296,7 +314,7 @@
                 </div>
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://via.placeholder.com/400x200/333/fff?text=Task+Tracker" alt="Project 3">
+                        <img src="images/task.png" alt="Project 3">
                         <div class="project-overlay">
                             <div class="project-links">
                                 <a href="#" class="project-link">🔗 Live Demo</a>
@@ -305,7 +323,7 @@
                         </div>
                     </div>
                     <div class="project-content">
-                        <h3>Task Tracker App</h3>
+                        <h3>Task Tracker Web</h3>
                         <p>A productivity app for managing tasks and projects with drag-and-drop functionality.</p>
                         <div class="project-tech">
                             <span>Vue.js</span>
@@ -327,14 +345,14 @@
                     </div>
                     <div class="project-content">
                         <h3>GORA</h3>
-                        <p>A School Maintenance Report Issue.</p>
+                        <p>A School Web-Based Maintenance Report.</p>
                         <div class="project-tech">
                             <span>HTML</span>
                             <span>CSS</span>
                             <span>Bootstrap</span>
-                            <span>JavaScript</span>
+                            <span>Javascript</span>
                             <span>PHP</span>
-                            <span>MySQL</span>
+                            <span>MYSQL</span>
                         </div>
                     </div>
                 </div>
@@ -343,6 +361,14 @@
     </section>
 
     <section id="contact">
+        <div class="contact-bg">
+            <div class="contact-floating-elements">
+                <div class="floating-icon contact-icon-1">📧</div>
+                <div class="floating-icon contact-icon-2">📱</div>
+                <div class="floating-icon contact-icon-3">💬</div>
+            </div>
+            <div class="contact-particles" id="contact-particles"></div>
+        </div>
         <div class="container">
             <h2>Get In Touch</h2>
             <p class="section-description">I'm always open to discussing new opportunities and interesting projects. Let's connect!</p>
@@ -384,6 +410,9 @@
     </section>
 
     <footer class="footer">
+        <div class="footer-bg">
+            <div class="footer-particles" id="footer-particles"></div>
+        </div>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
@@ -418,7 +447,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
