@@ -370,3 +370,29 @@ contactForm.addEventListener('submit', function(e) {
     alert('Thank you for your message! I will get back to you soon.');
     contactForm.reset();
 });
+
+// Resume Modal Handling
+const downloadCvBtn = document.getElementById('download-cv');
+const resumeModal = document.getElementById('resume-modal');
+const closeBtn = document.querySelector('.close');
+const backBtn = document.querySelector('.back-btn');
+
+downloadCvBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    resumeModal.style.display = 'block';
+});
+
+closeBtn.addEventListener('click', function() {
+    resumeModal.style.display = 'none';
+});
+
+backBtn.addEventListener('click', function() {
+    resumeModal.style.display = 'none';
+});
+
+// Close modal when clicking outside
+window.addEventListener('click', function(e) {
+    if (e.target === resumeModal) {
+        resumeModal.style.display = 'none';
+    }
+});
