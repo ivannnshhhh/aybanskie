@@ -1366,6 +1366,59 @@ body.light-mode .shape-about-3 {
     }
 }
 
+/* Development Focus */
+.development-focus {
+    margin-top: 40px;
+}
+
+.development-focus h4 {
+    margin-bottom: 20px;
+}
+
+.focus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.focus-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: var(--card-bg);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border);
+    backdrop-filter: blur(10px);
+    text-align: center;
+}
+
+.focus-item:hover {
+    background: var(--card-hover);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px var(--shadow);
+    border-color: rgba(0, 212, 255, 0.3);
+}
+
+.focus-icon {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: var(--accent-primary);
+    transition: transform 0.3s ease;
+}
+
+.focus-item:hover .focus-icon {
+    transform: scale(1.1);
+}
+
+.focus-item span {
+    font-weight: 500;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
 /* Projects Section */
 #projects {
     background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
@@ -2079,6 +2132,11 @@ textarea {
     .about-details {
         grid-template-columns: 1fr;
         gap: 30px;
+    }
+
+    .focus-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 15px;
     }
 
     .profile-pic-about img {
