@@ -428,3 +428,4 @@ demoBackBtn.addEventListener('click', function() {
     demoModal.style.display = 'none';
     demoContent.innerHTML = '';
 });
+
