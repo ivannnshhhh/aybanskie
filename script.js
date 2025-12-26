@@ -395,4 +395,36 @@ window.addEventListener('click', function(e) {
     if (e.target === resumeModal) {
         resumeModal.style.display = 'none';
     }
+    if (e.target === demoModal) {
+        demoModal.style.display = 'none';
+    }
+});
+
+// Demo Modal Handling
+const demoModal = document.getElementById('demo-modal');
+const demoContent = document.getElementById('demo-content');
+const demoCloseBtn = demoModal.querySelector('.close');
+const demoBackBtn = demoModal.querySelector('.back-btn');
+
+document.querySelectorAll('.project-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href !== '#' && this.textContent.includes('Live Demo')) {
+            e.preventDefault();
+            const demoSrc = href;
+            // Assuming demo is video for now
+            demoContent.innerHTML = `<video controls autoplay><source src="${demoSrc}" type="video/mp4">Your browser does not support the video tag.</video>`;
+            demoModal.style.display = 'block';
+        }
+    });
+});
+
+demoCloseBtn.addEventListener('click', function() {
+    demoModal.style.display = 'none';
+    demoContent.innerHTML = '';
+});
+
+demoBackBtn.addEventListener('click', function() {
+    demoModal.style.display = 'none';
+    demoContent.innerHTML = '';
 });
