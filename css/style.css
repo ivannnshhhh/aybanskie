@@ -467,12 +467,26 @@ body.light-mode .shape {
 }
 
 .hero-title .title {
-    display: block;
-    color: var(--accent-primary);
+    display: inline-block;
+    width: 500px; /* Fixed width to prevent layout shift */
+    height: 3rem; /* Height larger than font size to prevent clipping */
+    position: relative;
+    vertical-align: top;
+    overflow: visible; /* Ensure text is not clipped */
+}
+
+#typing-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: var(--text-primary);
+    -webkit-text-fill-color: var(--text-primary);
     font-size: 2.5rem;
     font-weight: 600;
+    line-height: 3rem; /* Match container height for proper alignment */
     border-right: 3px solid var(--accent-primary);
     animation: blink 1s infinite;
+    white-space: nowrap;
 }
 
 .hero-description {
@@ -926,12 +940,6 @@ body.light-mode .shape {
     max-width: 600px;
 }
 
-#typing-text {
-    color: var(--accent-primary);
-    border-right: 3px solid var(--accent-primary);
-    animation: blink 1s infinite;
-    font-weight: 600;
-}
 
 @keyframes blink {
     0%, 50% { border-color: transparent; }
