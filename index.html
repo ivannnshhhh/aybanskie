@@ -48,7 +48,7 @@
                 </div>
                 <h1 class="hero-title">
                     <span class="name">Ivan Fajarillo</span>
-                    <span class="title" id="typing-text"></span>
+                    <span class="title"><span id="typing-text"></span></span>
                 </h1>
                 <p class="hero-description text-reveal">
                     Passionate <span class="highlight">Full Stack Developer</span> crafting exceptional digital experiences
@@ -427,7 +427,7 @@
                         <div class="contact-icon-large">📍</div>
                         <h3>Location</h3>
                         <p>Bacoor City, Cavite</p>
-                        <a href="https://www.google.com/maps/@14.4088219,120.9941167,19.23z?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D" class="contact-link">View Map</a>
+                        <a href="https://www.google.com/maps/@14.4091542,120.9935074,17.42z?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D" id="view-map-btn" class="contact-link">View Map</a>
                     </div>
                 </div>
                 <form id="contact-form">
@@ -469,9 +469,16 @@
             <button class="back-btn">Back</button>
         </div>
     </div>
+<!-- Map Modal -->
+<div id="map-modal" class="modal">
+    <div class="modal-content demo-modal-content">
+        <span class="close">&times;</span>
+        <h2>My Location</h2>
+        <iframe src="https://maps.google.com/maps?q=14.4088219,120.9941167&output=embed" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        <button class="back-btn">Back</button>
+    </div>
+</div>
 
-    <script src="js/script.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>
-
-
