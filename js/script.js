@@ -398,6 +398,9 @@ window.addEventListener('click', function(e) {
     if (e.target === demoModal) {
         demoModal.style.display = 'none';
     }
+    if (e.target === mapModal) {
+        mapModal.style.display = 'none';
+    }
 });
 
 // Demo Modal Handling
@@ -423,9 +426,26 @@ demoCloseBtn.addEventListener('click', function() {
     demoModal.style.display = 'none';
     demoContent.innerHTML = '';
 });
-
 demoBackBtn.addEventListener('click', function() {
     demoModal.style.display = 'none';
     demoContent.innerHTML = '';
 });
 
+// Map Modal Handling
+const viewMapBtn = document.getElementById('view-map-btn');
+const mapModal = document.getElementById('map-modal');
+const mapCloseBtn = mapModal.querySelector('.close');
+const mapBackBtn = mapModal.querySelector('.back-btn');
+
+viewMapBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    mapModal.style.display = 'block';
+});
+
+mapCloseBtn.addEventListener('click', function() {
+    mapModal.style.display = 'none';
+});
+
+mapBackBtn.addEventListener('click', function() {
+    mapModal.style.display = 'none';
+});
