@@ -766,6 +766,24 @@ mapBackBtn.addEventListener('click', function() {
     mapModal.style.display = 'none';
 });
 
+// Tab Switching
+const tabBtns = document.querySelectorAll('.tab-btn');
+const tabContents = document.querySelectorAll('.tab-content');
+
+tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        // Remove active from all tabs
+        tabBtns.forEach(b => b.classList.remove('active'));
+        // Add active to clicked
+        btn.classList.add('active');
+        // Hide all contents
+        tabContents.forEach(content => content.classList.remove('active'));
+        // Show the corresponding content
+        const tab = btn.getAttribute('data-tab');
+        document.getElementById(tab + '-content').classList.add('active');
+    });
+});
+
 // Zodiac constellation overlay across sections (home, about, projects, contact)
 // Two large constellations per section, clearly visible, slow and calm.
 (function() {
