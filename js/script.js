@@ -138,7 +138,7 @@ for (let i = 0; i < 35; i++) {
 }
 
 // Continue creating particles
-setInterval(createHeroParticle, 600);
+setInterval(createHeroParticle, 400); // faster
 
 // Projects Particles
 const projectsParticlesContainer = document.getElementById('projects-particles');
@@ -158,12 +158,12 @@ function createProjectsParticle() {
 }
 
 // Create initial projects particles
-for (let i = 0; i < 25; i++) {
-    setTimeout(createProjectsParticle, i * 300);
+for (let i = 0; i < 30; i++) { // more initial
+    setTimeout(createProjectsParticle, i * 250);
 }
 
 // Continue creating projects particles
-setInterval(createProjectsParticle, 1000);
+setInterval(createProjectsParticle, 700); // faster
 
 // About Particles
 const aboutParticlesContainer = document.getElementById('about-particles');
@@ -193,12 +193,12 @@ function createAboutParticle() {
 }
 
 // Create initial about particles
-for (let i = 0; i < 22; i++) {
-    setTimeout(createAboutParticle, i * 250);
+for (let i = 0; i < 28; i++) { // more initial
+    setTimeout(createAboutParticle, i * 200);
 }
 
 // Continue creating about particles
-setInterval(createAboutParticle, 900);
+setInterval(createAboutParticle, 600); // faster
 
 // Contact Particles
 const contactParticlesContainer = document.getElementById('contact-particles');
@@ -228,12 +228,12 @@ function createContactParticle() {
 }
 
 // Create initial contact particles
-for (let i = 0; i < 20; i++) {
-    setTimeout(createContactParticle, i * 200);
+for (let i = 0; i < 25; i++) { // more initial
+    setTimeout(createContactParticle, i * 180);
 }
 
 // Continue creating contact particles
-setInterval(createContactParticle, 800);
+setInterval(createContactParticle, 550); // faster
 
 // Footer Particles
 const footerParticlesContainer = document.getElementById('footer-particles');
@@ -263,12 +263,12 @@ function createFooterParticle() {
 }
 
 // Create initial footer particles
-for (let i = 0; i < 16; i++) {
-    setTimeout(createFooterParticle, i * 150);
+for (let i = 0; i < 20; i++) { // more initial
+    setTimeout(createFooterParticle, i * 120);
 }
 
 // Continue creating footer particles
-setInterval(createFooterParticle, 600);
+setInterval(createFooterParticle, 400); // faster
 
 // Animated Background
 const animatedBg = document.getElementById('animated-bg');
@@ -311,9 +311,12 @@ const animatedBg = document.getElementById('animated-bg');
             d2.className = 'stars-layer depth-2';
             const d3 = document.createElement('div');
             d3.className = 'stars-layer depth-3';
+            const d4 = document.createElement('div');
+            d4.className = 'stars-layer depth-4';
             galaxy.appendChild(d1);
             galaxy.appendChild(d2);
             galaxy.appendChild(d3);
+            galaxy.appendChild(d4);
 
             // Nebula drift
             const neb = document.createElement('div');
@@ -338,6 +341,9 @@ const animatedBg = document.getElementById('animated-bg');
         });
         document.querySelectorAll('.stars-layer.depth-3').forEach(el => {
             el.style.transform = `translate3d(0, ${-scrollY * 0.05}px, 0)`;
+        });
+        document.querySelectorAll('.stars-layer.depth-4').forEach(el => {
+            el.style.transform = `translate3d(0, ${-scrollY * 0.07}px, 0)`;
         });
         requestAnimationFrame(parallax);
     }
@@ -533,7 +539,7 @@ function createParticle() {
     }, 20000);
 }
 
-setInterval(createParticle, 300);
+setInterval(createParticle, 200); // faster global particles
 
 // Orbital dust rings: faint circular paths, random positions, very subtle and cosmic
 (function() {
@@ -592,6 +598,45 @@ setInterval(createParticle, 300);
         rings.splice(idx, 1);
         createRing();
     }, 25000);
+})();
+
+// Shooting Stars and Comets
+(function() {
+    if (!animatedBg) return;
+
+    function createShootingStar() {
+        const star = document.createElement('div');
+        star.className = 'shooting-star';
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 50 + '%'; // start from top half
+        star.style.animationDuration = (2 + Math.random() * 3) + 's';
+        star.style.animationDelay = Math.random() * 10 + 's';
+        animatedBg.appendChild(star);
+
+        setTimeout(() => {
+            if (star.parentNode) star.parentNode.removeChild(star);
+        }, 5000);
+    }
+
+    function createComet() {
+        const comet = document.createElement('div');
+        comet.className = 'comet';
+        comet.style.left = Math.random() * 100 + '%';
+        comet.style.top = Math.random() * 30 + '%'; // start from top third
+        comet.style.animationDuration = (3 + Math.random() * 4) + 's';
+        comet.style.animationDelay = Math.random() * 15 + 's';
+        animatedBg.appendChild(comet);
+
+        setTimeout(() => {
+            if (comet.parentNode) comet.parentNode.removeChild(comet);
+        }, 8000);
+    }
+
+    // Create shooting stars occasionally
+    setInterval(createShootingStar, 5000 + Math.random() * 3000); // every 5-8 seconds
+
+    // Create comets less frequently
+    setInterval(createComet, 12000 + Math.random() * 8000); // every 12-20 seconds
 })();
 
 // Animate Progress Bars
@@ -783,271 +828,3 @@ tabBtns.forEach(btn => {
         document.getElementById(tab + '-content').classList.add('active');
     });
 });
-
-// Zodiac constellation overlay across sections (home, about, projects, contact)
-// Two large constellations per section, clearly visible, slow and calm.
-(function() {
-    const sectionIds = ['home', 'about', 'projects', 'contact'];
-    const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
-    if (!sections.length) return;
-
-    // 12 zodiac constellations as normalized templates (0..1) with edges
-    // Simplified node maps for visual clarity; not astronomically accurate.
-    const ZODIAC = [
-        { name: 'Aries', points: [[0.05,0.8],[0.25,0.65],[0.5,0.55],[0.8,0.35]], edges: [[0,1],[1,2],[2,3]] },
-        { name: 'Taurus', points: [[0.1,0.7],[0.3,0.6],[0.5,0.5],[0.7,0.45],[0.85,0.35],[0.35,0.4],[0.25,0.25]], edges: [[0,1],[1,2],[2,3],[3,4],[1,5],[5,6]] },
-        { name: 'Gemini', points: [[0.2,0.2],[0.2,0.8],[0.4,0.25],[0.4,0.85],[0.7,0.3],[0.7,0.9]], edges: [[0,1],[2,3],[4,5],[0,2],[2,4],[1,3],[3,5]] },
-        { name: 'Cancer', points: [[0.1,0.5],[0.35,0.55],[0.55,0.45],[0.8,0.5]], edges: [[0,1],[1,2],[2,3]] },
-        { name: 'Leo', points: [[0.1,0.7],[0.3,0.6],[0.45,0.5],[0.65,0.35],[0.85,0.25]], edges: [[0,1],[1,2],[2,3],[3,4]] },
-        { name: 'Virgo', points: [[0.1,0.75],[0.25,0.6],[0.45,0.55],[0.65,0.5],[0.8,0.4]], edges: [[0,1],[1,2],[2,3],[3,4]] },
-        { name: 'Libra', points: [[0.2,0.6],[0.4,0.5],[0.6,0.5],[0.8,0.6],[0.5,0.3]], edges: [[0,1],[1,2],[2,3],[1,4],[2,4]] },
-        { name: 'Scorpius', points: [[0.1,0.8],[0.25,0.7],[0.45,0.6],[0.6,0.55],[0.75,0.6],[0.85,0.75]], edges: [[0,1],[1,2],[2,3],[3,4],[4,5]] },
-        { name: 'Sagittarius', points: [[0.1,0.4],[0.25,0.35],[0.4,0.3],[0.55,0.35],[0.7,0.45],[0.85,0.6]], edges: [[0,1],[1,2],[2,3],[3,4],[4,5]] },
-        { name: 'Capricornus', points: [[0.15,0.7],[0.35,0.6],[0.55,0.5],[0.75,0.45],[0.9,0.35]], edges: [[0,1],[1,2],[2,3],[3,4]] },
-        { name: 'Aquarius', points: [[0.15,0.35],[0.3,0.45],[0.45,0.5],[0.6,0.55],[0.75,0.5],[0.85,0.4]], edges: [[0,1],[1,2],[2,3],[3,4],[4,5]] },
-        { name: 'Pisces', points: [[0.15,0.25],[0.3,0.3],[0.45,0.4],[0.6,0.55],[0.75,0.7],[0.9,0.8]], edges: [[0,1],[1,2],[2,3],[3,4],[4,5]] },
-    ];
-
-    // Assign pairs for each section ensuring no immediate repetition of the same pair
-    function pickPairs() {
-        const unique = new Set();
-        const pairs = [];
-        while (pairs.length < sections.length && unique.size < 50) {
-            let a = Math.floor(Math.random() * ZODIAC.length);
-            let b;
-            do { b = Math.floor(Math.random() * ZODIAC.length); } while (b === a);
-            const key = a < b ? `${a}-${b}` : `${b}-${a}`;
-            if (!unique.has(key)) {
-                unique.add(key);
-                pairs.push([a, b]);
-            }
-        }
-        // If randomness failed to fill, fallback deterministically
-        for (let i = 0; pairs.length < sections.length; i++) {
-            const a = i % ZODIAC.length;
-            const b = (i + 1) % ZODIAC.length;
-            const key = a < b ? `${a}-${b}` : `${b}-${a}`;
-            if (!unique.has(key)) {
-                unique.add(key);
-                pairs.push([a, b]);
-            }
-        }
-        return pairs;
-    }
-
-    const pairs = pickPairs();
-
-    const overlays = [];
-    const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
-
-    function createOverlay(section, pair) {
-        const canvas = document.createElement('canvas');
-        canvas.className = 'constellation-canvas';
-        section.appendChild(canvas);
-        const ctx = canvas.getContext('2d');
-
-        const overlay = { section, canvas, ctx, width: 0, height: 0, constellations: [], active: false };
-
-        function setSize() {
-            const rect = section.getBoundingClientRect();
-            overlay.width = Math.max(1, Math.floor(rect.width));
-            overlay.height = Math.max(1, Math.floor(rect.height));
-            canvas.style.width = overlay.width + 'px';
-            canvas.style.height = overlay.height + 'px';
-            canvas.width = Math.floor(overlay.width * dpr);
-            canvas.height = Math.floor(overlay.height * dpr);
-            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-            build(pair);
-        }
-
-        function build(pair) {
-            overlay.constellations = [];
-            // Position two large constellations in different regions of the section
-            // Centered and well-spaced positions (left-center and right-center)
-            const positions = [
-                { x: 0.33, y: 0.5 },
-                { x: 0.67, y: 0.5 },
-            ];
-            const chosen = positions;
-
-            const scaleBase = Math.min(overlay.width, overlay.height);
-            // larger scale for bold, dominant presence
-            const scale = Math.max(0.7, Math.min(1.0, (scaleBase / 800))); // responsive range
-
-            for (let i = 0; i < 2; i++) {
-                const idx = pair[i];
-                const tpl = ZODIAC[idx];
-                const cx = chosen[i].x * overlay.width;
-                const cy = chosen[i].y * overlay.height;
-                const rot = (Math.random() - 0.5) * 0.6; // subtle rotation
-                const s = scale * (0.95 + Math.random()*0.2);
-
-                const pts = tpl.points.map(([px, py]) => {
-                    // center normalize around 0.5,0.5 then scale and rotate
-                    const nx = (px - 0.5) * overlay.width * 0.6; // widen base shape
-                    const ny = (py - 0.5) * overlay.height * 0.6;
-                    const rx = nx * Math.cos(rot) - ny * Math.sin(rot);
-                    const ry = nx * Math.sin(rot) + ny * Math.cos(rot);
-                    return { x: cx + rx * s, y: cy + ry * s };
-                });
-
-                // animation params
-                const driftAngle = Math.random() * Math.PI * 2;
-                const driftSpeed = 0.04 + Math.random() * 0.06; // slow but noticeable
-                const twinklePhase = Math.random() * Math.PI * 2;
-
-                // dense local star cluster around constellation
-                const clusterRadius = Math.min(overlay.width, overlay.height) * 0.18;
-                const cloudStars = [];
-                const cloudCount = 90;
-                for (let k = 0; k < cloudCount; k++) {
-                    const a = Math.random() * Math.PI * 2;
-                    const d = (Math.random() ** 0.7) * clusterRadius;
-                    const px2 = cx + Math.cos(a) * d;
-                    const py2 = cy + Math.sin(a) * d;
-                    const speed = 0.02 + Math.random() * 0.04;
-                    const ang = Math.random() * Math.PI * 2;
-                    cloudStars.push({
-                        x: px2, y: py2,
-                        vx: Math.cos(ang) * speed * 0.3,
-                        vy: Math.sin(ang) * speed * 0.3,
-                        size: 0.8 + Math.random() * 1.2,
-                        phase: Math.random() * Math.PI * 2,
-                        tw: 0.25 + Math.random() * 0.3,
-                    });
-                }
-
-                overlay.constellations.push({ name: tpl.name, pts, edges: tpl.edges, cx, cy, rot, s, vx: Math.cos(driftAngle)*driftSpeed, vy: Math.sin(driftAngle)*driftSpeed, twinklePhase, cloudStars, clusterRadius });
-            }
-        }
-
-        overlay.resize = setSize;
-        setSize();
-        overlays.push(overlay);
-        return overlay;
-    }
-
-    sections.forEach((section, i) => createOverlay(section, pairs[i]));
-
-    // Visibility observer
-    const io = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            const overlay = overlays.find(o => o.section === entry.target);
-            if (overlay) overlay.active = entry.isIntersecting;
-        });
-    }, { threshold: 0.05 });
-
-    overlays.forEach(o => io.observe(o.section));
-
-    // Resize handling
-    let resizeTimer;
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(() => overlays.forEach(o => o.resize()), 150);
-    });
-
-    function drawOverlay(overlay, t) {
-        const { ctx, width, height, constellations } = overlay;
-        ctx.clearRect(0, 0, width, height);
-
-        // Visual parameters (bigger, brighter, thicker)
-        const starMin = 2.2; // px
-        const starMax = 4.2; // px
-        const starAlphaBase = 0.85;
-        const lineAlphaBase = 0.6; // brighter lines for bold visibility
-        const lineWidth = 2.0; // thicker lines
-
-        const time = (t || 0) / 1000;
-
-        ctx.lineCap = 'round';
-        ctx.lineJoin = 'round';
-
-        for (let c = 0; c < constellations.length; c++) {
-            const cons = constellations[c];
-
-            // update drift
-            for (let p = 0; p < cons.pts.length; p++) {
-                cons.pts[p].x += cons.vx;
-                cons.pts[p].y += cons.vy;
-            }
-
-            // keep softly inside bounds by wrapping
-            for (let p = 0; p < cons.pts.length; p++) {
-                const pt = cons.pts[p];
-                if (pt.x < -50) pt.x = width + 50;
-                if (pt.x > width + 50) pt.x = -50;
-                if (pt.y < -50) pt.y = height + 50;
-                if (pt.y > height + 50) pt.y = -50;
-            }
-
-            // lines with smooth fade
-            ctx.lineWidth = lineWidth;
-            for (let i = 0; i < cons.edges.length; i++) {
-                const [a, b] = cons.edges[i];
-                const A = cons.pts[a];
-                const B = cons.pts[b];
-                const fade = lineAlphaBase + 0.12 * Math.sin(time * 0.6 + cons.twinklePhase + i);
-                ctx.strokeStyle = `rgba(190,190,190,${Math.max(0.25, Math.min(0.85, fade))})`;
-                ctx.beginPath();
-                ctx.moveTo(A.x, A.y);
-                ctx.lineTo(B.x, B.y);
-                ctx.stroke();
-            }
-
-            // light nebula haze behind each constellation
-            const grd = ctx.createRadialGradient(cons.cx, cons.cy, 0, cons.cx, cons.cy, cons.clusterRadius * 1.2);
-            grd.addColorStop(0, 'rgba(0,212,255,0.18)');
-            grd.addColorStop(1, 'rgba(0,212,255,0)');
-            ctx.beginPath();
-            ctx.fillStyle = grd;
-            ctx.arc(cons.cx, cons.cy, cons.clusterRadius * 1.2, 0, Math.PI * 2);
-            ctx.fill();
-
-            // anchor stars (constellation points) bigger/brighter + visible twinkle
-            for (let p = 0; p < cons.pts.length; p++) {
-                const pt = cons.pts[p];
-                const tw = 0.35 + 0.35 * Math.sin(time * 0.9 + cons.twinklePhase + p);
-                const size = starMin + (starMax - starMin) * (0.6 + tw * 0.4);
-                const a = Math.max(0.6, Math.min(1, starAlphaBase + 0.3 * Math.sin(time * 0.8 + cons.twinklePhase + p)));
-                // white core
-                ctx.beginPath();
-                ctx.fillStyle = `rgba(255,255,255,${a})`;
-                ctx.arc(pt.x, pt.y, size, 0, Math.PI * 2);
-                ctx.fill();
-                // subtle ring
-                ctx.beginPath();
-                ctx.strokeStyle = `rgba(0,212,255,${a * 0.5})`;
-                ctx.lineWidth = 0.8;
-                ctx.arc(pt.x, pt.y, size + 0.8, 0, Math.PI * 2);
-                ctx.stroke();
-            }
-
-            // dense cluster stars around constellation
-            if (cons.cloudStars) {
-                for (let p = 0; p < cons.cloudStars.length; p++) {
-                    const s = cons.cloudStars[p];
-                    s.x += s.vx;
-                    s.y += s.vy;
-                    const tw = s.tw;
-                    const sz = Math.max(0.8, s.size + 0.3 * Math.sin(time * 1.0 + s.phase));
-                    const aa = 0.35 + 0.35 * Math.sin(time * 0.9 + s.phase);
-                    ctx.beginPath();
-                    ctx.fillStyle = `rgba(255,255,255,${aa})`;
-                    ctx.arc(s.x, s.y, sz, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-            }
-        }
-    }
-
-    function animate(t) {
-        for (let i = 0; i < overlays.length; i++) {
-            const o = overlays[i];
-            if (!o.active) continue;
-            drawOverlay(o, t);
-        }
-        requestAnimationFrame(animate);
-    }
-
-    requestAnimationFrame(animate);
-})();
